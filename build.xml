@@ -4,8 +4,11 @@
  <target name="build"
    depends="prepare,vendors,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpunit,phpcb"/>
 
+ <target name="build-with-vendors"
+   depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpunit,phpcb"/>
+
  <target name="build-parallel"
-   depends="prepare,vendors,lint,tools-parallel,phpunit,phpcb"/>
+   depends="prepare,lint,tools-parallel,phpunit,phpcb"/>
 
  <target name="tools-parallel" description="Run tools in parallel">
   <parallel threadCount="2">
@@ -33,6 +36,8 @@
   <mkdir dir="${basedir}/build/coverage"/>
   <mkdir dir="${basedir}/build/logs"/>
   <mkdir dir="${basedir}/build/pdepend"/>
+  <symlink link="${basedir}/app/config/parameters.yml" resource="/home/moises/Dev/Picmnt/app/config/parameters.yml"/>
+  <symlink link="${basedir}/vendors" resource="/home/moises/Dev/Picmnt/vendors"/>
  </target>
 
  <target name="vendors"
