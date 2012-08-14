@@ -29,7 +29,7 @@
   <delete dir="${basedir}/build/coverage"/>
   <delete dir="${basedir}/build/logs"/>
   <delete dir="${basedir}/build/pdepend"/>
-  <delete file="${basedir}/app/parameters.yml"/>
+  <delete file="${basedir}/app/config/parameters.yml"/>
   <delete dir="${basedir}/vendor"/>
  </target>
 
