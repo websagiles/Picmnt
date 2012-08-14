@@ -35,10 +35,9 @@
   <mkdir dir="${basedir}/build/pdepend"/>
  </target>
 
- <target name="vendors" description="Install vendors">
-  <apply executable="composer.phar" failonerror="true">
-   <arg value="install" />
-  </apply>
+ <target name="vendors"
+	 description="install vendors">
+   <exec command="composer.phar install"/>
  </target>
 
  <target name="lint" description="Perform syntax check of sourcecode files">
