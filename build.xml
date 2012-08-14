@@ -44,7 +44,7 @@
   <delete dir="${basedir}/build/pdepend"/>
   <delete file="${basedir}/app/config/parameters.yml"/>
   <symlink link="${basedir}/app/config/parameters.yml" resource="/home/moises/Dev/Picmnt/app/config/parameters.yml"/>
-  <symlink link="${basedir}/vendors/" resource="/home/moises/Dev/Picmnt/vendors/" failonerror="yes"/>
+  <symlink link="${basedir}/vendors" resource="/home/moises/Dev/Picmnt/vendors" failonerror="yes"/>
  </target>
 
 
