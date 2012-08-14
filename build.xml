@@ -2,11 +2,11 @@
 
 <project name="name-of-project" default="build">
 
- <target name="build"
+ <target name="build-with-vendors"
    depends="prepare,prepare-env,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpunit,phpcb"/>
 
- <target name="build-with-vendors"
-   depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpunit,phpcb"/>
+ <target name="build"
+   depends="prepare,vendors,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpunit,phpcb"/>
 
  <target name="build-parallel"
    depends="prepare,prepare-env,lint,tools-parallel,phpunit,phpcb"/>
