@@ -3,13 +3,13 @@
 <project name="name-of-project" default="build">
 
  <target name="build"
-   depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpunit,phpcb"/>
+   depends="prepare,prepare-env,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpunit,phpcb"/>
 
  <target name="build-with-vendors"
    depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpunit,phpcb"/>
 
  <target name="build-parallel"
-   depends="prepare,lint,tools-parallel,phpunit,phpcb"/>
+   depends="prepare,prepare-env,lint,tools-parallel,phpunit,phpcb"/>
 
  <target name="tools-parallel" description="Run tools in parallel">
   <parallel threadCount="2">
@@ -29,19 +29,24 @@
   <delete dir="${basedir}/build/code-browser"/>
   <delete dir="${basedir}/build/coverage"/>
   <delete dir="${basedir}/build/logs"/>
-  <delete dir="${basedir}/build/pdepend"/>
-  <delete file="${basedir}/app/config/parameters.yml"/>
  </target>
 
  <target name="prepare" depends="clean" description="Prepare for build">
-  <symlink link="${basedir}/app/config/parameters.yml" resource="/home/moises/Dev/Picmnt/app/config/parameters.yml"/>
-  <symlink link="${basedir}/vendors" resource="/home/moises/Dev/Picmnt/vendors"/>
   <mkdir dir="${basedir}/build/api"/>
   <mkdir dir="${basedir}/build/code-browser"/>
   <mkdir dir="${basedir}/build/coverage"/>
   <mkdir dir="${basedir}/build/logs"/>
   <mkdir dir="${basedir}/build/pdepend"/>
  </target>
+
+
+ <target name="prepare-env" description="Prepare Environment">
+  <delete dir="${basedir}/build/pdepend"/>
+  <delete file="${basedir}/app/config/parameters.yml"/>
+  <symlink link="${basedir}/app/config/parameters.yml" resource="/home/moises/Dev/Picmnt/app/config/parameters.yml"/>
+  <symlink link="${basedir}/vendors" resource="/home/moises/Dev/Picmnt/vendors"/>
+ </target>
+
 
  <target name="vendors"
 	 description="install vendors">
